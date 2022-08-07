@@ -1,3 +1,4 @@
 # Ignore temporary files
 
 code/__pycache__
+*.pyc
