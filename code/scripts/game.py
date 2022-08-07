@@ -1,6 +1,6 @@
 import pygame, sys
-from settings import *
-from level import Level
+from settings.settings import *
+from scripts.level import Level
 
 class Game:
     # Code runs when class is initialized. Only runs once 

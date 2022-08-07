@@ -1,9 +1,8 @@
 from lib2to3.pgen2.token import NEWLINE
 import pygame
-from settings import *
-from player import Player
-from tile import Tile
-from debug import debug
+from settings.settings import *
+from scripts.player import Player
+from scripts.tile import Tile
 
 class Level:
     def __init__(self):
@@ -33,4 +32,3 @@ class Level:
         # update and draw the game
         self.visible_sprites.draw(self.display_surface)
         self.visible_sprites.update()
-        debug(self.player.direction)
