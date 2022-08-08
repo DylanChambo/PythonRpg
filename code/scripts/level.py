@@ -1,8 +1,8 @@
-from lib2to3.pgen2.token import NEWLINE
 import pygame
 from settings.settings import *
 from scripts.player import Player
 from scripts.tile import Tile
+from scripts.camera import CameraGroup
 
 class Level:
     def __init__(self):
@@ -10,7 +10,7 @@ class Level:
         #get the display surface
         self.display_surface = pygame.display.get_surface()
         # sprite group setup
-        self.visible_sprites = pygame.sprite.Group()
+        self.visible_sprites = CameraGroup()
         self.obsticle_sprites = pygame.sprite.Group()
         # creates map:
         self.create_map()
@@ -30,5 +30,5 @@ class Level:
 
     def run(self):
         # update and draw the game
-        self.visible_sprites.draw(self.display_surface)
+        self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
