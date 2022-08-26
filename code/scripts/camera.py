@@ -1,9 +1,8 @@
 import pygame
-from settings.common import *
-from settings.settings import *
+from settings.settings import Globals
 
-XOFFSET = WIDTH / 2 - TILESIZE / 2
-YOFFSET = HEIGHT / 2 - TILESIZE / 2
+XOFFSET = Globals.WIDTH / 2 - Globals.TILESIZE / 2
+YOFFSET = Globals.HEIGHT / 2 - Globals.TILESIZE / 2
 
 class Camera():
     def __init__(self, game, pos):
@@ -11,18 +10,18 @@ class Camera():
         self.pos = pygame.math.Vector2(pos)
 
     def ajust(self, pos):
-        return (pos[0] * TILESIZE + XOFFSET, pos[1] * TILESIZE + YOFFSET)
+        return ((pos[0] - self.pos[0]) * Globals.TILESIZE + XOFFSET, (pos[1] - self.pos[1]) * Globals.TILESIZE + YOFFSET)
 
     def draw(self):
         self.game.screen.fill('black')
 
-        for i in range(-12, 12):
-            for j in range(-12, 12):
+        for i in range(-5, 6):
+            for j in range(-5, 6):
                 if (i % 2 == j % 2):
                     x, y = self.ajust((i, j))
-                    pygame.draw.rect(self.game.screen, (0, 255, 0), pygame.Rect( x, y, TILESIZE, TILESIZE))
+                    pygame.draw.rect(self.game.screen, (0, 255, 0), pygame.Rect( x, y, Globals.TILESIZE, Globals.TILESIZE))
 
-        self.game.player.draw(self.game.screen, self)
+        self.game.player.draw(self)
 
         pygame.display.update()
 
