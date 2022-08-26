@@ -1,12 +1,13 @@
 import pygame, sys
 from settings.settings import *
-from scripts.level import Level
+from settings.common import *
+from scripts.player import Player
+from scripts.camera import Camera
 
 class Game:
     # Code runs when class is initialized. Only runs once 
     def __init__(self):
         pygame.init()
-       
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
          # Sets Title of window
         pygame.display.set_caption("Pygame")
@@ -14,7 +15,10 @@ class Game:
         # pygame.display.set_icon(Icon_name)
         self.clock = pygame.time.Clock()
         # initializes the game.
-        self.level = Level()
+        self.player = Player(self, (0, 0))
+        self.camera = Camera(self, (0, 0))
+        # self.input = Input(self)
+        # self.level = Level()
     
     # Run loop
     def run(self):
@@ -26,10 +30,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                
-            self.screen.fill('black')
-            # Updates the level
-            self.level.run()
-            # Updates display
-            pygame.display.update()
+        
+            self.camera.draw()
             self.clock.tick(FPS)
+
+        
+
+    def input(self):
+        pass
