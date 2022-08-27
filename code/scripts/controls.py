@@ -18,3 +18,9 @@ class Input:
         self.controls["DOWN"] = keys[Keys.DOWN]
         self.controls["LEFT"] = keys[Keys.LEFT]
         self.controls["RIGHT"] = keys[Keys.RIGHT]
+
+        if keys[pygame.K_F11]:
+            pygame.display.toggle_fullscreen()
+
+        if keys[pygame.K_ESCAPE]:
+            pygame.event.post(pygame.event.Event(pygame.QUIT))

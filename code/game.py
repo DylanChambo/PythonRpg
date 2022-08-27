@@ -30,10 +30,18 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                    
-            Globals.update()
-            self.controls.update()
-            self.player.update()
-            self.camera.draw()
+
+            self.update()
+            self.draw()
 
             self.clock.tick(Globals.FPS)
+
+
+    def update(self):
+        Globals.update()
+        self.controls.update()
+        self.camera.update()
+        self.player.update()
+
+    def draw(self):
+        self.camera.draw()

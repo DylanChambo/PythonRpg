@@ -9,6 +9,10 @@ class Globals(object):
     WIDTH = 1280
     HEIGHT = 720
     TILESIZE = WIDTH // 20
+    XOFFSET = WIDTH / 2 - TILESIZE / 2
+    YOFFSET = HEIGHT / 2 - TILESIZE / 2
+
+    
     @classmethod
     def update(cls):
         cls.WIDTH, cls.HEIGHT = pygame.display.get_window_size()
@@ -17,6 +21,8 @@ class Globals(object):
         else:
             pass
         cls.TILESIZE = cls.WIDTH // 20
+        cls.XOFFSET = cls.WIDTH / 2 - cls.TILESIZE / 2
+        cls.YOFFSET = cls.HEIGHT / 2 - cls.TILESIZE / 2
 
 class Keys():
     UP = pygame.K_w
