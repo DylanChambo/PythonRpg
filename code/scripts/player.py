@@ -5,14 +5,14 @@ class Player():
     def __init__(self, game, pos):
         self.game = game
         self.image = pygame.transform.scale(pygame.image.load('../graphics/player.png').convert_alpha(), ( Globals.TILESIZE, 2 * Globals.TILESIZE))
-        self.pos = pos
+        self.pos = pygame.math.Vector2(pos)
         self.hitbox = self.image.get_rect()
-        self.hitbox.center = pos
+        self.hitbox.center = self.imageCenter()
         self.direction = pygame.math.Vector2()
         self.speed = 0.1
 
     def draw(self, camera):
-        self.game.screen.blit(self.image, camera.ajust(self.pos))
+        self.game.screen.blit(self.image, camera.ajust((self.pos.x, self.pos.y - 1)))
 
     def update(self):
         self.image = pygame.transform.scale(pygame.image.load('../graphics/player.png').convert_alpha(), ( Globals.TILESIZE, 2 * Globals.TILESIZE))
@@ -34,6 +34,8 @@ class Player():
         if self.direction.magnitude() != 0:
             self.direction = self.direction.normalize()
         self.pos += speed * self.direction
-        self.hitbox.center = Globals.TILESIZE * self.pos
+        self.hitbox.center = self.imageCenter()
 
         
+    def imageCenter(self):
+        return (Globals.TILESIZE * self.pos.x, Globals.TILESIZE * (self.pos.y + 1))

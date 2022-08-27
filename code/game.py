@@ -16,7 +16,7 @@ class Game:
         self.clock = pygame.time.Clock()
         # initializes the game.
         self.player = Player(self, (0, 0))
-        self.camera = Camera(self, (0, 1))
+        self.camera = Camera(self)
         self.controls = Input(self)
         # self.level = Level()
     
