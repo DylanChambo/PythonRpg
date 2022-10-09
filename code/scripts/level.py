@@ -1,10 +1,11 @@
-# import pygame
+import pygame
 # from settings.settings import *
 # from scripts.player import Player
 # from scripts.camera import Camera
 
-# class Level:
-#     def __init__(self):
+class Level:
+     def __init__(self):
+        pass
 
 #         #get the display surface
 #         self.display_surface = pygame.display.get_surface()
